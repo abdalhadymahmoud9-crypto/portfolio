@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="موقع السيرة الذاتية لعبدالهادى محمود، مطور واجهات أمامية.">
+<title>عبدالهادى محمود | مطور واجهات أمامية</title>
+<style>
+/* ===== المتغيرات: نغيّر الألوان من مكان واحد ===== */
+:root {
+  --bg: #1a1d29;
+  --surface: #252a3d;
+  --line: #3a4060;
+  --text: #ffffff;
+  --muted: #a8aec7;
+  --accent: #8b97ff;
+  --radius: 10px;
+}
+
+/* ===== إعدادات عامة ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+.container { width: min(1000px, 100% - 40px); margin-inline: auto; }
+section { padding-block: 70px; scroll-margin-top: 60px; } /* scroll-margin عشان القائمة الثابتة ما تغطيش العنوان */
+h2 { border-inline-start: 4px solid var(--accent); padding-inline-start: 12px; margin-bottom: 30px; }
+
+/* ===== القائمة العلوية ===== */
+nav { position: sticky; top: 0; z-index: 10; background: #12141c; border-bottom: 1px solid var(--line); }
+nav .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding-block: 10px; }
+.logo { font-weight: bold; direction: ltr; }
+nav ul { list-style: none; display: flex; gap: 8px; margin: 0; padding: 0; }
+nav ul a { display: block; padding: 4px 12px; border-radius: 6px; color: var(--muted); transition: background .2s, color .2s; }
+nav ul a:hover { background: var(--surface); color: var(--text); }
+
+/* ===== الواجهة الرئيسية ===== */
+header { text-align: center; padding-block: 110px 80px; }
+header h1 { font-size: clamp(1.8rem, 5vw, 3rem); margin: 0 0 10px; }
+.job { color: var(--accent); margin: 0 0 10px; }
+.intro { color: var(--muted); }
+.buttons { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block; padding: 10px 26px;
+  border: 2px solid var(--accent); border-radius: var(--radius);
+  background: transparent; color: var(--text);
+  font: inherit; cursor: pointer;
+  transition: transform .15s, background .2s, color .2s;
+}
+.btn:hover { background: var(--accent); color: #12141c; transform: translateY(-2px); }
+.btn-solid { background: var(--accent); color: #12141c; }
+
+/* ===== الكروت: Grid بيعمل أعمدة تلقائية حسب عرض الشاشة ===== */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px;
+  transition: transform .2s, border-color .2s;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.card h3 { margin-top: 0; }
+.card p { color: var(--muted); margin: 0; }
+
+/* ===== المهارات: شارات ===== */
+.badges { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; direction: ltr; }
+.badges li { padding: 4px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: .95rem; }
+.badges li:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ===== الاهتمامات ===== */
+.interests { padding-inline-start: 20px; color: var(--muted); }
+
+/* ===== التواصل ===== */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+form label { display: block; font-weight: bold; }
+input, textarea {
+  width: 100%; padding: 10px; margin: 6px 0 16px;
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--line); border-radius: 6px; font: inherit;
+}
+#status { min-height: 1.5em; color: var(--muted); }
+.direct { list-style: none; padding: 0; margin: 0; }
+.direct li { margin-bottom: 12px; }
+.direct a { display: block; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .2s; }
+.direct a:hover { border-color: var(--accent); }
+.direct small { display: block; color: var(--muted); }
+.direct span { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+
+/* ===== معلومات هزار ===== */
+.fun { list-style: none; padding: 0; margin: 0 0 20px; display: grid; gap: 10px; }
+.fun li { padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.warning { color: var(--muted); font-size: .95rem; }
+
+/* ===== الفوتر ===== */
+footer { border-top: 1px solid var(--line); padding-block: 22px; color: var(--muted); }
+footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+footer a:hover { color: var(--accent); }
+
+/* ===== الموبايل ===== */
+@media (max-width: 700px) {
+  .contact { grid-template-columns: 1fr; }
+  nav .container { justify-content: center; }
+  header { padding-block: 70px 50px; }
+  section { padding-block: 50px; }
+}
+
+/* احترام إعداد "تقليل الحركة" عند المستخدم */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="القائمة الرئيسية">
+  <div class="container">
+    <a class="logo" href="#top">Abdalhady Mahmoud</a>
+    <ul>
+      <li><a href="#about">عنّي</a></li>
+      <li><a href="#skills">المهارات</a></li>
+      <li><a href="#services">خدماتي</a></li>
+      <li><a href="#contact">تواصل معي</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="container">
+    <h1>أهلاً، أنا عبدالهادى محمود</h1>
+    <p class="job">مطور واجهات أمامية (Frontend Web Developer) &amp; مهتم بتقنيات الويب</p>
+    <p class="intro">أبني تجارب ويب حديثة، سريعة، ومبتكرة باستخدام أحدث تقنيات الويب.</p>
+    <div class="buttons">
+      <a class="btn btn-solid" href="#contact">تواصل معي</a>
+      <a class="btn" href="#skills">معاينة المهارات</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="about">
+    <div class="container">
+      <h2>عنّي</h2>
+      <p>أنا مطور ومبرمج ويب شغوف بالتكنولوجيا، وتطوير التطبيقات، والأمن السيبراني. أهتم بكتابة الكود النظيف، بناء واجهات مستخدم تفاعلية، واستكشاف الأدوات التقنية الحديثة. أؤمن بالتطوير المستمر وبناء مشاريع حقيقية تحل المشكلات.</p>
+      <h3>اهتماماتي</h3>
+      <ul class="interests">
+        <li>تطوير وتصميم مواقع الويب وتجربة التقنيات الجديدة.</li>
+        <li>استكشاف أدوات الذكاء الاصطناعي وتطبيقاته.</li>
+        <li>شبكات الكمبيوتر والأمن السيبراني.</li>
+        <li>الألعاب الذكية وحل الألغاز (الشطرنج ومكعب روبيك).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>المهارات والتقنيات</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>تطوير الويب (Frontend)</h3>
+          <ul class="badges">
+            <li>HTML5 (Semantic Structure)</li>
+            <li>CSS3 (Flexbox / Grid / Responsive)</li>
+            <li>JavaScript (ES6+)</li>
+            <li>Node.js &amp; Express.js</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>الأدوات وأنظمة التشغيل</h3>
+          <ul class="badges">
+            <li>Git &amp; GitHub</li>
+            <li>Vercel (Hosting)</li>
+            <li>Linux (Zorin OS) &amp; Terminal</li>
+            <li>UI/UX Design &amp; Canva</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>ماذا أفعل؟</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>تطوير الواجهات الأمامية</h3>
+          <p>بناء صفحات وتطبيقات ويب سريعة التجاوب وتعمل بكفاءة على جميع الشاشات.</p>
+        </article>
+        <article class="card">
+          <h3>تصميم واجهات المستخدم</h3>
+          <p>تنسيق الألوان والتخطيطات البصرية لتقديم تجربة استخدام مريحة وجذابة.</p>
+        </article>
+        <article class="card">
+          <h3>تطوير البرمجيات والأفكار</h3>
+          <p>تحويل الأفكار البرمجية إلى مشاريع ويب متكاملة ومستضافة أونلاين.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="fun">
+    <div class="container">
+      <h2>معلومات مش هتفيدك في حاجة 🤡</h2>
+      <ul class="fun">
+        <li>🍝 بعرف أطبخ، وبحب البشاميل</li>
+        <li>🎤 بعرف أغني، بس الجيران لسه بيفكروا يشتكوا ولا لأ</li>
+        <li>📖 بعرف أقرأ القرآن، ودارس تجويد، والحمد لله على نعمة القرآن</li>
+        <li>💡 أوقات ببقى أباجورة، مفيش تفسير، دي حالة</li>
+        <li>😎 ومش بالـ AI يا محمد، أنا اللي عملته بإيدي</li>
+        <li>💜 لونه بنفسجي عشان محمود، وعشان الأحمر كان مشغول</li>
+        <li>🤫 الكود شغال من أول مرة، وإوعوا حد يسألني إزاي</li>
+      </ul>
+      <p class="warning">⚠️ تحذير: الموقع ده اتعمل في ظروف تحدي صعبة، من غير أي مسؤولية على المطور 🏆</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>دعنا نعمل معاً</h2>
+      <div class="contact">
+        <form id="contact-form" novalidate>
+          <label for="name">الاسم</label>
+          <input type="text" id="name" autocomplete="name" required>
+
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" autocomplete="email" dir="ltr" required>
+
+          <label for="message">الرسالة</label>
+          <textarea id="message" rows="5" required></textarea>
+
+          <button class="btn btn-solid" type="submit">إرسال</button>
+          <p id="status" role="status" aria-live="polite"></p>
+        </form>
+
+        <ul class="direct">
+          <li><a href="mailto:abdalhadymahmoud9@gmail.com"><small>البريد الإلكتروني</small><span>abdalhadymahmoud9@gmail.com</span></a></li>
+          <li><a href="https://wa.me/201099058532" target="_blank" rel="noopener noreferrer"><small>الواتساب</small><span>+201099058532</span></a></li>
+          <li><a href="https://github.com/abdalhadymahmoud9-crypto" target="_blank" rel="noopener noreferrer"><small>GitHub</small><span>abdalhadymahmoud9-crypto</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© 2026 عبدالهادى محمود — جميع الحقوق محفوظة.</span>
+    <a href="#top">العودة إلى الأعلى</a>
+  </div>
+</footer>
+
+<script>
+// الموقع static (مفيش سيرفر)، فبنجهز رسالة إيميل ونفتحها في برنامج البريد
+const form = document.getElementById("contact-form");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+  const message = form.message.value.trim();
+
+  // تحقق بسيط قبل الإرسال
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!name || !message || !emailOk) {
+    status.textContent = "من فضلك اكتب الاسم وبريدًا صحيحًا والرسالة.";
+    return;
+  }
+
+  const subject = encodeURIComponent(`رسالة من الموقع - ${name}`);
+  const body = encodeURIComponent(`${message}\n\nالاسم: ${name}\nالإيميل: ${email}`);
+
+  status.textContent = "جاري فتح برنامج البريد...";
+  window.location.href = `mailto:abdalhadymahmoud9@gmail.com?subject=${subject}&body=${body}`;
+});
+</script>
+
+</body>
+</html>
