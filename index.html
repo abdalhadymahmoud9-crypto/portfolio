@@ -4,215 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="الموقع الشخصي لعبدالهادى محمود، مطور واجهات أمامية ومهتم بتقنيات الويب والأمن السيبراني.">
-  <meta name="theme-color" content="#1a1d29">
+  <meta name="theme-color" content="#161E2F">
   <title>عبدالهادى محمود | مطور واجهات أمامية</title>
   <style>
-    body {
-      margin: 0;
-      background: #1a1d29;
-      color: white;
-      font-family: Tahoma, Arial, sans-serif;
-      line-height: 1.8;
+    :root {
+      --bg: #161E2F; --surface: #242F49; --line: #384358; --accent: #FFA586; --red: #B51A2B; --wine: #541A2E;
+      --text: #F4EFEA; --muted: #BCC3D2;
     }
-
-    a {
-      color: #8b97ff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .site-nav {
-      position: sticky;
-      top: 0;
-      background: #252a3d;
-      padding: 10px 0;
-    }
-
-    .nav-inner,
-    .nav-links,
-    .button-row,
-    .badges,
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      color: white;
-      font-weight: bold;
-    }
-
-    .nav-links a {
-      color: #a8aec7;
-    }
-
-    .hero {
-      padding: 50px 0;
-    }
-
-    .hero h1 {
-      font-size: 32px;
-    }
-
-    .hero h1 span,
-    .eyebrow,
-    .service-card h3 {
-      color: #8b97ff;
-    }
-
-    .hero-role,
-    .section-lead,
-    .service-card p,
-    .interest-list,
-    .site-footer,
-    .contact-card span {
-      color: #a8aec7;
-    }
-
-    .section {
-      padding: 35px 0;
-      scroll-margin-top: 80px;
-    }
-
-    .section-heading {
-      font-size: 28px;
-    }
-
-    .about-layout,
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .card-grid,
-    .fun-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 15px;
-    }
-
-    .panel,
-    .card,
-    .contact-card,
-    .fun-card {
-      background: #252a3d;
-      border: 1px solid #3a4060;
-      border-radius: 8px;
-      padding: 15px;
-    }
-
-    .badge {
-      background: #1a1d29;
-      border: 1px solid #3a4060;
-      border-radius: 5px;
-      padding: 3px 8px;
-      color: #a8aec7;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid #8b97ff;
-      border-radius: 6px;
-    }
-
-    .button-primary {
-      background: #8b97ff;
-      color: #1a1d29;
-    }
-
-    .button-secondary {
-      color: white;
-    }
-
-    .fun-warning {
-      padding: 10px;
-      color: #a8aec7;
-      background: #252a3d;
-    }
-
-    .contact-form,
-    .contact-links,
-    .field {
-      display: grid;
-      gap: 10px;
-    }
-
-    .field input,
-    .field textarea {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 9px;
-      color: white;
-      background: #1a1d29;
-      border: 1px solid #3a4060;
-    }
-
-    .field textarea {
-      height: 120px;
-    }
-
-    .contact-form button {
-      width: fit-content;
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .contact-card {
-      display: flex;
-      gap: 10px;
-      overflow-wrap: anywhere;
-    }
-
-    .contact-card strong {
-      display: block;
-    }
-
-    #status {
-      color: #8b97ff;
-    }
-
-    .site-footer {
-      border-top: 1px solid #3a4060;
-      padding: 15px 0;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Segoe UI", Tahoma, "Noto Sans Arabic", Arial, sans-serif; line-height: 1.8; font-size: 17px; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: #fff; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .skip { position: absolute; top: -60px; inset-inline-start: 12px; background: var(--accent); color: var(--bg); padding: 8px 14px; border-radius: 6px; z-index: 10; text-decoration: none; }
+    .skip:focus { top: 10px; }
+    .container { width: min(92%, 1000px); margin-inline: auto; }
+    .site-nav { position: sticky; top: 0; z-index: 5; background: rgba(22, 30, 47, .94); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+    .nav-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 20px; padding: 10px 0; }
+    .brand { color: var(--text); font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+    .nav-links a { color: var(--muted); text-decoration: none; padding: 6px 2px; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+    .eyebrow { color: var(--accent); font-size: .9rem; margin: 0 0 6px; letter-spacing: .02em; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3.1rem); line-height: 1.25; margin: 0 0 14px; font-weight: 700; }
+    .hero h1 span { color: var(--accent); }
+    .hero-role { color: var(--muted); font-size: 1.1rem; margin: 0 0 8px; }
+    .hero-description { max-width: 36em; margin: 0 0 26px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-block; padding: 10px 22px; min-height: 44px; border: 1px solid var(--accent); border-radius: 8px; text-decoration: none; font: inherit; cursor: pointer; }
+    .button-primary { background: var(--accent); color: var(--bg); font-weight: 700; }
+    .button-primary:hover { background: #ffb89f; color: var(--bg); }
+    .button-secondary { color: var(--accent); background: transparent; }
+    .button-secondary:hover { background: var(--wine); color: #fff; }
+    .section { padding: 52px 0; scroll-margin-top: 60px; border-bottom: 1px solid var(--line); }
+    .section-heading { font-size: 1.7rem; margin: 0 0 6px; }
+    .section-lead { color: var(--muted); margin: 0 0 24px; }
+    .about-layout, .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .panel, .card, .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+    .panel p, .card p { margin: 0; }
+    h3 { margin: 0 0 8px; font-size: 1.08rem; }
+    .interest-list { margin: 0; padding-inline-start: 20px; color: var(--muted); }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 2px 10px; color: var(--muted); font-size: .92rem; }
+    .service-card p { color: var(--muted); }
+    .project { display: flex; flex-direction: column; gap: 8px; }
+    .project p:not(.links) { color: var(--muted); flex: 1; }
+    .project .links { display: flex; gap: 18px; margin-top: 6px !important; }
+    .note { margin-top: 18px; color: var(--muted); font-size: .92rem; border-inline-start: 3px solid var(--red); padding-inline-start: 12px; }
+    .contact-form, .contact-links, .field { display: grid; gap: 10px; }
+    .field label { font-size: .95rem; color: var(--muted); }
+    .field input, .field textarea { width: 100%; padding: 10px; min-height: 44px; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+    .field textarea { height: 130px; resize: vertical; }
+    .contact-form button { width: fit-content; }
+    #status { margin: 0; min-height: 1.6em; color: var(--accent); }
+    .contact-card { display: flex; gap: 12px; align-items: center; overflow-wrap: anywhere; }
+    .contact-card strong { display: block; }
+    .contact-icon { color: var(--accent); font-size: 1.3rem; width: 1.6em; text-align: center; }
+    .site-footer { padding: 22px 0 40px; color: var(--muted); font-size: .95rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
     @media (max-width: 700px) {
-      .about-layout,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 26px;
-      }
-
-      .nav-inner {
-        display: block;
-      }
+      body { font-size: 16px; }
+      .about-layout, .contact-grid { grid-template-columns: 1fr; }
+      .hero { padding: 44px 0 36px; }
+      .section { padding: 38px 0; }
     }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
+  <a class="skip" href="#about">تخطي إلى المحتوى</a>
   <nav class="site-nav" aria-label="القائمة الرئيسية">
     <div class="container nav-inner">
       <a class="brand" href="#top" lang="en" dir="ltr">Abdalhady Mahmoud</a>
       <div class="nav-links">
         <a href="#about">عنّي</a>
         <a href="#skills">المهارات</a>
+        <a href="#projects">المشاريع</a>
         <a href="#services">خدماتي</a>
         <a href="#contact">تواصل معي</a>
       </div>
@@ -221,13 +92,13 @@
 
   <header class="hero" id="top">
     <div class="container hero-content">
-      <p class="eyebrow">مرحبًا بك في مساحتي الرقمية</p>
-      <h1>أهلاً، أنا <span>عبدالهادى محمود</span></h1>
-      <p class="hero-role">مطور واجهات أمامية (Frontend Web Developer) &amp; مهتم بتقنيات الويب</p>
-      <p class="hero-description">أبني تجارب ويب حديثة، سريعة، ومبتكرة باستخدام أحدث تقنيات الويب.</p>
+      <p class="eyebrow">مرحبًا بك</p>
+      <h1>أنا <span>عبدالهادى محمود</span></h1>
+      <p class="hero-role">مطور واجهات أمامية (Frontend Web Developer) ومهتم بتقنيات الويب</p>
+      <p class="hero-description">أبني تطبيقات ويب بسيطة وواضحة وسريعة التجاوب.</p>
       <div class="button-row">
-        <a class="button button-primary" href="#contact">تواصل معي</a>
-        <a class="button button-secondary" href="#skills">معاينة المهارات</a>
+        <a class="button button-primary" href="#projects">شاهد المشاريع</a>
+        <a class="button button-secondary" href="#contact">تواصل معي</a>
       </div>
     </div>
   </header>
@@ -246,9 +117,10 @@
             <h3>اهتماماتي</h3>
             <ul class="interest-list">
               <li>تطوير وتصميم مواقع الويب وتجربة التقنيات الجديدة.</li>
-              <li>استكشاف أدوات الذكاء الاصطناعي وتطبيقاته.</li>
+              <li>استكشاف أدوات الذكاء الاصطناعي وتطبيقاتها.</li>
               <li>شبكات الكمبيوتر والأمن السيبراني.</li>
-              <li>الألعاب الذكية وحل الألغاز (الشطرنج ومكعب روبيك).</li>
+              <li>الشطرنج ومكعب روبيك وحل الألغاز.</li>
+              <li>الطبخ، وتجويد القرآن الكريم.</li>
             </ul>
           </article>
         </div>
@@ -263,7 +135,7 @@
         <div class="card-grid">
           <article class="card">
             <h3>تطوير الويب</h3>
-            <div class="badges">
+            <div class="badges" lang="en" dir="ltr">
               <span class="badge">HTML5 (Semantic Structure)</span>
               <span class="badge">CSS3 (Flexbox / Grid / Responsive)</span>
               <span class="badge">JavaScript (ES6+)</span>
@@ -272,7 +144,7 @@
           </article>
           <article class="card">
             <h3>الأدوات وأنظمة التشغيل</h3>
-            <div class="badges">
+            <div class="badges" lang="en" dir="ltr">
               <span class="badge">Git &amp; GitHub</span>
               <span class="badge">Vercel (Hosting)</span>
               <span class="badge">Linux (Zorin OS) &amp; Terminal</span>
@@ -280,6 +152,47 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="eyebrow">أعمال منشورة</p>
+        <h2 class="section-heading">المشاريع</h2>
+        <p class="section-lead">تطبيقات ويب مفتوحة المصدر على GitHub، تعمل مباشرة في المتصفح.</p>
+        <div class="card-grid">
+          <article class="card project">
+            <h3 lang="en" dir="ltr">Daily Planner</h3>
+            <p>مخطط يومي بجدول ساعات من 04:00 إلى 22:00، أهداف اليوم، قائمة مهام وملاحظات. تسجيل دخول Google اختياري للمزامنة.</p>
+            <p class="links"><a href="https://abdalhadymahmoud9-crypto.github.io/todo-list/" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Daily Planner</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/todo-list" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Daily Planner</span></a></p>
+          </article>
+          <article class="card project">
+            <h3 lang="en" dir="ltr">Focus Desk</h3>
+            <p>مؤقت مذاكرة وخطة أسبوعية وسجل: جلسات تركيز، هدف أسبوعي لكل مادة، وتتبع التتابع اليومي.</p>
+            <p class="links"><a href="https://abdalhadymahmoud9-crypto.github.io/study-planner/" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Focus Desk</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/study-planner" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Focus Desk</span></a></p>
+          </article>
+          <article class="card project">
+            <h3 lang="en" dir="ltr">Ledger</h3>
+            <p>متتبع مصروفات بميزانية شهرية وفئات ومتوسط يومي. المبالغ بالجنيه المصري ومخزنة بالقروش لتجنب أخطاء الكسور.</p>
+            <p class="links"><a href="https://abdalhadymahmoud9-crypto.github.io/expense-tracker/" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Ledger</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/expense-tracker" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Ledger</span></a></p>
+          </article>
+          <article class="card project">
+            <h3 lang="en" dir="ltr">Chess Studio</h3>
+            <p>مراجعة مباريات الشطرنج بتحليل محرك Stockfish وشرح عربي لكل نقلة، واللعب ضد المحرك. يُحمَّل المحرك فقط عند الطلب.</p>
+            <p class="links"><a href="https://abdalhadymahmoud9-crypto.github.io/chess-replay/" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Chess Studio</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/chess-replay" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Chess Studio</span></a></p>
+          </article>
+          <article class="card project">
+            <h3 lang="en" dir="ltr">Pulse Analysis</h3>
+            <p>محلل لقراءات النبض من ملف CSV: يتحقق من الصفوف، يزيل القراءات المستحيلة، ويحسب الإحصاءات والزمن في كل نطاق.</p>
+            <p class="links"><a href="https://abdalhadymahmoud9-crypto.github.io/pulse-analysis/" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Pulse Analysis</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/pulse-analysis" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Pulse Analysis</span></a></p>
+          </article>
+          <article class="card project">
+            <h3 lang="en" dir="ltr">Aman</h3>
+            <p>فلتر اختياري للمحتوى غير اللائق لأجهزتي الشخصية: مصدر تطبيق أندرويد وإضافة لمتصفح Chrome. متاح كمصدر مفتوح فقط.</p>
+            <p class="links"><a href="https://github.com/abdalhadymahmoud9-crypto/aman" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Aman</span></a></p>
+          </article>
+        </div>
+        <p class="note">هذه المشاريع بُنيت بمساعدة الذكاء الاصطناعي (Built with AI assistance)، وكل مشروع منها يوضح ذلك في ملف README الخاص به.</p>
       </div>
     </section>
 
@@ -295,30 +208,13 @@
           </article>
           <article class="card service-card">
             <h3>تصميم واجهات المستخدم</h3>
-            <p>تنسيق الألوان والتخطيطات البصرية لتقديم تجربة استخدام مريحة وجذابة.</p>
+            <p>تنسيق الألوان والتخطيطات البصرية لتقديم تجربة استخدام مريحة وواضحة.</p>
           </article>
           <article class="card service-card">
             <h3>تطوير البرمجيات والأفكار</h3>
             <p>تحويل الأفكار البرمجية إلى مشاريع ويب متكاملة ومستضافة أونلاين.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section fun-section" id="fun">
-      <div class="container">
-        <p class="eyebrow">الجانب غير الرسمي</p>
-        <h2 class="section-heading">معلومات مش هتفيدك في حاجة 🤡</h2>
-        <div class="fun-grid">
-          <article class="fun-card">🍝 بعرف أطبخ، وبحب البشاميل</article>
-          <article class="fun-card">🎤 بعرف أغني، بس الجيران لسه بيفكروا يشتكوا ولا لأ</article>
-          <article class="fun-card">📖 بعرف أقرأ القرآن، ودارس تجويد، والحمد لله على نعمة القرآن (من غير أي هزار في الدين)</article>
-          <article class="fun-card">💡 أوقات ببقى أباجورة، مفيش تفسير، دي حالة</article>
-          <article class="fun-card">😎 ومش بالـ AI يا محمد، أنا اللي عملته بإيدي</article>
-          <article class="fun-card">💜 لونه بنفسجي عشان محمود، وعشان الأحمر كان مشغول</article>
-          <article class="fun-card">🤫 الكود شغال من أول مرة، وإوعوا حد يسألني إزاي</article>
-        </div>
-        
       </div>
     </section>
 
@@ -376,7 +272,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-     
+      <span>عبدالهادى محمود</span>
       <a href="#top">العودة إلى الأعلى ↑</a>
     </div>
   </footer>
