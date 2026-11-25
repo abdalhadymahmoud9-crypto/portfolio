@@ -58,6 +58,7 @@ a{color:var(--accent);text-underline-offset:3px}a:hover{color:#fff}
 .card.project:hover{transform:translateY(-6px);border-color:rgba(255,165,134,.5);box-shadow:0 22px 50px rgba(0,0,0,.45)}
 .card.project .art{height:120px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--wine),var(--red) 80%)}
 .card.project .art::after{content:attr(data-n);position:absolute;inset-inline-end:18px;bottom:-14px;font-size:5.5rem;font-weight:900;line-height:1;color:rgba(255,255,255,.14);font-family:Georgia,serif}
+.card.project .art img.logo{position:absolute;inset-block-start:18px;inset-inline-start:22px;width:84px;height:84px;object-fit:contain;border-radius:20px;z-index:1;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 .card.project .art::before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;inset-inline-start:-60px;top:-110px;background:radial-gradient(circle,rgba(255,165,134,.55),transparent 65%)}
 .card.project:nth-child(2) .art{background:linear-gradient(135deg,#1d2f57,#3a4f86 85%)}
 .card.project:nth-child(3) .art{background:linear-gradient(135deg,#4a1830,#b51a2b 90%)}
@@ -152,7 +153,7 @@ textarea{min-height:130px;resize:vertical}
         <a class="button button-primary" href="#projects">شاهد المشاريع</a>
         <a class="button button-secondary" href="#contact">تواصل معي</a>
       </div>
-      <div class="stats" aria-label="ملخص"><div class="stat"><b>10</b><span>مشاريع منشورة</span></div><div class="stat"><b>9</b><span>تطبيقات تعمل في المتصفح</span></div></div><div class="hero-visual" aria-hidden="true"><div class="hv hv1"><i></i><div><b>Chess Studio</b><span>يعمل في المتصفح</span></div></div><div class="hv hv2"><i></i><div><b>Ledger</b><span>يعمل في المتصفح</span></div></div><div class="hv hv3"><i></i><div><b>Daily Planner</b><span>يعمل في المتصفح</span></div></div></div>
+      <div class="stats" aria-label="ملخص"><div class="stat"><b>11</b><span>مشاريع منشورة</span></div><div class="stat"><b>10</b><span>تطبيقات تعمل في المتصفح</span></div></div><div class="hero-visual" aria-hidden="true"><div class="hv hv1"><i></i><div><b>Chess Studio</b><span>يعمل في المتصفح</span></div></div><div class="hv hv2"><i></i><div><b>Ledger</b><span>يعمل في المتصفح</span></div></div><div class="hv hv3"><i></i><div><b>Daily Planner</b><span>يعمل في المتصفح</span></div></div></div>
     </div>
   </header>
 
@@ -241,7 +242,7 @@ textarea{min-height:130px;resize:vertical}
           </div></article>
           <article class="card project"><div class="art" data-n="06" aria-hidden="true"></div><div class="body">
             <h3 lang="en" dir="ltr">Typing Trainer</h3><div class="tags"><span class="tag">تطبيق ويب</span><span class="tag">عربي وإنجليزي</span></div>
-            <p>مدرّب كتابة بالعربي والإنجليزي: يقيس السرعة والدقة، ويحفظ نتايجك في المتصفح، ويوريك الحروف اللي بتغلط فيها أكتر. بدون حساب وبدون مزامنة.</p>
+            <p>مدرّب كتابة بالعربي والإنجليزي: دورة على مراحل بدروس صغيرة وتمارين للحروف الضعيفة واختبارات مراحل وامتحان نهائي، وبيقيس السرعة والدقة. تسجيل دخول Google اختياري لمزامنة التقدّم. الشهادة بتسجّل إتمام الدورة داخل التطبيق بس، وهي مش معتمدة ولا بتثبت هوية أو مستوى.</p>
             <p class="links"><a href="https://abdalhady-typing-trainer.vercel.app/" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Typing Trainer</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/typing-trainer" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Typing Trainer</span></a></p>
           </div></article>
           <article class="card project"><div class="art" data-n="07" aria-hidden="true"></div><div class="body">
@@ -254,12 +255,17 @@ textarea{min-height:130px;resize:vertical}
             <p>متتبّع عادات: أيام محددة لكل عادة، سلاسل التزام حالية وأفضل، خريطة حرارية لآخر ١٦ أسبوع، ونسب الإنجاز. بياناته على الجهاز مع تصدير واستيراد JSON.</p>
             <p class="links"><a href="https://abdalhady-habits.vercel.app/" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Habit Tracker</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/habit-tracker" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Habit Tracker</span></a></p>
           </div></article>
-          <article class="card project"><div class="art" data-n="09" aria-hidden="true"></div><div class="body">
+          <article class="card project"><div class="art" style="background:linear-gradient(135deg,#1a1a1a,#3a3a3a 85%)" data-n="09" aria-hidden="true"><img class="logo" src="https://ayah-ai-iota.vercel.app/assets/aistudio/App_icon_and_favicon_1x_8a38fada.png" alt="" width="84" height="84" loading="lazy"></div><div class="body">
             <h3 lang="en" dir="ltr">Ayah</h3><div class="tags"><span class="tag">تجريبي</span><span class="tag">بحث في المصادر الإسلامية</span><span class="tag">RTL</span></div>
             <p>مساعد بحث بالعربي في مصادر إسلامية، بيعرض المصادر اللي رجع لها مع الإجابة. نسخة تجريبية: الإجابات المولَّدة ممكن تغلط، وده مش فتوى ولا مرجع ديني. راجع المصادر المعروضة واسأل أهل العلم.</p>
             <p class="links"><a href="https://ayah-ai-iota.vercel.app" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Ayah</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/ayah" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Ayah</span></a></p>
           </div></article>
-          <article class="card project"><div class="art" data-n="10" aria-hidden="true"></div><div class="body">
+          <article class="card project"><div class="art" style="background:linear-gradient(135deg,#2a1a08,#8a5a14 85%)" data-n="10" aria-hidden="true"><img class="logo" src="https://abdalhady-prayer.vercel.app/logo.svg" alt="" width="84" height="84" loading="lazy"></div><div class="body">
+            <h3 lang="en" dir="ltr">Prayer Times</h3><div class="tags"><span class="tag">تطبيق ويب</span><span class="tag">Aladhan API</span><span class="tag">القبلة والأذكار</span></div>
+            <p>مواعيد الصلاة بالطريقة المصرية (الهيئة المصرية العامة للمساحة) مع عدّاد للصلاة الجاية واتجاه القبلة وأذكار حصن المسلم بعدّاد يومي. المواعيد حسابية وممكن تختلف دقيقة عن مسجدك، والأذكار منسوخة من ملف JSON عام بدون تخريج.</p>
+            <p class="links"><a href="https://abdalhady-prayer.vercel.app" target="_blank" rel="noopener noreferrer">فتح التطبيق<span class="sr"> Prayer Times</span></a> <a href="https://github.com/abdalhadymahmoud9-crypto/prayer-times" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Prayer Times</span></a></p>
+          </div></article>
+          <article class="card project"><div class="art" data-n="11" aria-hidden="true"></div><div class="body">
             <h3 lang="en" dir="ltr">Aman</h3><div class="tags"><span class="tag">أندرويد</span><span class="tag">إضافة Chrome</span></div>
             <p>فلتر اختياري للمحتوى غير اللائق لأجهزتي الشخصية: مصدر تطبيق أندرويد وإضافة لمتصفح Chrome. مشروع تجريبي: لم يُختبر على جهاز فعلي، ولا يوجد ملف APK عام، ولم يُحدَّد ترخيص للكود بعد. الكود متاح للاطلاع فقط.</p>
             <p class="links"><a href="https://github.com/abdalhadymahmoud9-crypto/aman" target="_blank" rel="noopener noreferrer">الكود<span class="sr"> Aman</span></a></p>
