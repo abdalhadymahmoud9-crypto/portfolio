@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="الموقع الشخصي لعبدالهادى محمود، مطور واجهات أمامية ومهتم بتقنيات الويب والأمن السيبراني.">
-  <meta name="theme-color" content="#12141F">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2216%22%20fill=%22%23383E5C%22/%3E%3Cpath%20d=%22M18%2048%2032%2015%2046%2048M23.5%2038h17%22%20fill=%22none%22%20stroke=%22%23E4E6F0%22%20stroke-width=%227%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#1A0B10">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2216%22%20fill=%22%234A1A27%22/%3E%3Cpath%20d=%22M18%2048%2032%2015%2046%2048M23.5%2038h17%22%20fill=%22none%22%20stroke=%22%23F5EDE4%22%20stroke-width=%227%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3C/svg%3E">
   <title>عبدالهادى محمود | مطور واجهات أمامية</title>
   <style>
 :root{--bg:#342721;--line:rgba(221,197,163,.22);--accent:#DDC5A3;--red:#8a5a3c;--wine:#4a372c;--text:#F4EBDD;--muted:#C9B391;--r:20px}
@@ -339,6 +339,72 @@ input:focus,textarea:focus{border-color:var(--c7);box-shadow:none}
 .mshot .bar span{margin-inline-start:8px;flex:1;background:var(--c1);color:var(--c6);font-size:.68rem;padding:0 10px;border-radius:99px;line-height:1.7;text-align:left;direction:ltr;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mshot img{display:block;width:100%;height:auto;aspect-ratio:800/463;object-fit:cover;object-position:top}
 .mnote{margin:0;font-size:.82rem;color:var(--c3)}
+/* cohesive foundation: one navy base, dark cards, one light emphasis card, lavender as small accents */
+.hero,.section,#about,#skills,#projects,#services,#contact{background:var(--c1)!important;color:var(--c7)}
+.section{border-top:1px solid var(--c3)}
+.hero::before{display:none}
+.section-heading,#about .section-heading,#projects .section-heading,#contact .section-heading{color:var(--c7)}
+.section-lead,#projects .section-lead{color:var(--c6)}
+.section-heading::after,#about .section-heading::after,#projects .section-heading::after,#services .section-heading::after,#contact .section-heading::after{background:var(--c5);width:56px;height:5px}
+.eyebrow,.hero .eyebrow,#about .eyebrow,#projects .eyebrow,#services .eyebrow,#contact .eyebrow{background:transparent;color:var(--c5);border:1px solid var(--c3);padding:4px 14px}
+.eyebrow::before,.hero .eyebrow::before,#about .eyebrow::before,#projects .eyebrow::before{background:var(--c5)}
+.hero h1 span{background:none;color:var(--c5);-webkit-text-fill-color:var(--c5);padding:0}
+.nav-inner{border:1px solid var(--c3);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.stat:nth-child(n){background:var(--c2);color:var(--c7);border:1px solid var(--c3)}
+.stat b{color:var(--c5)}
+.hv,.hv2,.hv3{background:var(--c2);color:var(--c7);border:1px solid var(--c3)}
+.panel,.card,.contact-card,#about .panel,#about .panel+.panel,#skills .card,#skills .card+.card,#services .card,#services .card:nth-child(n),#contact .contact-card,#contact .contact-card:nth-child(n),#contact .panel,#projects .card,#projects .card:nth-child(n){background:var(--c2)!important;border:1px solid var(--c3)!important;box-shadow:0 14px 34px rgba(0,0,0,.28)!important;color:var(--c7);--text:var(--c7);--muted:var(--c6)}
+.panel *,.card h3,.contact-card h3{color:inherit}
+.badge,.badge:nth-child(n){background:var(--c3);color:var(--c7)}
+.tag{background:var(--c3);color:var(--c7)}
+.interest-list li::before{background:var(--c5)}
+.service-card::before,#services .card:nth-child(n)::before{height:4px;background:var(--c5)}
+.contact-icon{background:var(--c5);color:var(--c1)}
+input,textarea{background:var(--c1);border:1px solid var(--c3);color:var(--c7)}
+input:focus,textarea:focus{border-color:var(--c5);outline:none}
+.note,#projects .note{background:var(--c2);color:var(--c6);border-inline-start:4px solid var(--c5)}
+.button-primary,.button-primary:hover{box-shadow:none}
+.button-secondary{border:1px solid var(--c4)}
+/* featured: one light emphasis card, two dark */
+.feat{border:1px solid var(--c3)!important}
+.feat-a{background:var(--c7)!important;color:var(--c1)}
+.feat-a .fhead h3{color:var(--c1)}.feat-a .fbody p{color:var(--c2)}.feat-a .try-hint{color:var(--c3)!important}
+.feat-a .tag{background:var(--c1);color:var(--c7)}
+.feat-a .story dt{background:var(--c1);color:var(--c7)}.feat-a .story dd{color:var(--c2)}
+.feat-a .more summary{background:var(--c1);color:var(--c7)}
+.feat-a .links a:first-child{background:var(--c1);border-color:var(--c1);color:var(--c7)}
+.feat-a .links a{border-color:var(--c1);color:var(--c1)}
+.feat-a .links a:first-child:hover{background:var(--c5);border-color:var(--c5);color:var(--c1)}
+.feat-a .ftheme.t-learn{background:var(--c5);color:var(--c1)}
+.feat-b,.feat-c{background:var(--c2)!important;box-shadow:0 14px 34px rgba(0,0,0,.28)}
+.feat-b .fbody p,.feat-b .story dd{color:var(--c6)}.feat-b .try-hint{color:var(--c6)!important}
+.feat-b .tag,.feat-c .tag{background:var(--c3)}
+.feat-b .links a:first-child{background:var(--c5);border-color:var(--c5);color:var(--c1)}
+.feat-b .ftheme.t-learn{background:var(--c6)}
+/* other projects: dark tiles */
+.more-title{color:var(--c7)}.more-title span{color:var(--c5)}.more-hint{color:var(--c6)}
+.mini{background:var(--c2);color:var(--c7);border:1px solid var(--c3);box-shadow:none}
+.mini summary:hover{background:var(--c3)}
+.mini summary::after{background:var(--c5);color:var(--c1)}.mini[open] summary::after{background:var(--c4);color:var(--c7)}
+.mbody{border-top:1px solid var(--c3)}.mbody p{color:var(--c6)}
+.mbody .tag{background:var(--c3);color:var(--c7)}
+.mbody .links a{border-color:var(--c4);color:var(--c7)}
+.mbody .links a:first-child{background:var(--c5);color:var(--c1);border-color:var(--c5)}
+.mini .mtag.t-learn{background:var(--c6);color:var(--c1)}.mini .mtag.t-focus{background:var(--c4);color:var(--c7)}.mini .mtag.t-intent{background:var(--c7);color:var(--c1)}
+.mshot{border:1px solid var(--c3)}.mnote{color:var(--c6)}
+.site-footer{border-top:0}
+#about .section-lead,#contact .section-lead,#projects .section-lead a{color:var(--c6)}
+#projects .section-lead a{color:var(--c5)}
+#services .card h3,#services .card:nth-child(n) h3,#contact .contact-card h3,#contact .contact-card strong,#contact .contact-card:nth-child(n) strong,.panel h3{color:var(--c7)}
+#services .card p,#services .card:nth-child(n) p,#about .panel p,#about .panel li,#contact .contact-card .cc-hint,#contact .contact-card:nth-child(n) .cc-hint,#contact .contact-card span,.interest-list li{color:var(--c6)}
+#contact .contact-card a,#contact .contact-card:nth-child(n) a{color:var(--c7)}
+.feat-a{box-shadow:none!important}
+.feat-a .fbody p,.feat-a .story dd{color:var(--c2)}
+/* burgundy palette */
+:root{--c1:#1A0B10;--c2:#2A1017;--c3:#4A1A27;--c4:#6E2536;--c5:#B5586A;--c6:#CF9A8B;--c7:#F5EDE4}
+body{background:var(--c1)}
+body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(800px 480px at 88% -5%,rgba(181,88,106,.16),transparent 60%),radial-gradient(700px 460px at 4% 40%,rgba(207,154,139,.07),transparent 60%),radial-gradient(900px 600px at 50% 115%,rgba(0,0,0,.5),transparent 60%)}
+.nav-inner{background:var(--c2)}
 </style>
 </head>
 <body>
