@@ -126,6 +126,30 @@ textarea{min-height:130px;resize:vertical}
 .to-top:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:480px){.to-top{left:12px;bottom:12px;width:42px;height:42px}}
 .section,[id="top"],#about,#skills,#projects,#services,#contact{scroll-margin-top:100px}html{scroll-behavior:smooth}
+
+/* two-color solid theme: cocoa #342721 / beige #DDC5A3 */
+body{background:#342721}body::before{display:none}
+.nav-inner{background:#342721;backdrop-filter:none;border:2px solid #DDC5A3}
+.section{background:#342721;padding-block:56px}
+#about,#projects,#contact{background:#DDC5A3;--text:#342721;--muted:#4a382d;--accent:#342721;--line:#342721;color:#342721}
+#about .section-heading,#projects .section-heading,#contact .section-heading{color:#342721}
+#about a,#projects .section-lead a,#contact a{color:#342721}
+.panel,.card,.contact-card,.stat,.hv{background:#342721;border:2px solid #DDC5A3;box-shadow:none;--text:#F4EBDD;--muted:#DDC5A3;--accent:#DDC5A3;--line:rgba(221,197,163,.5);color:#F4EBDD}
+#about .panel,#about .card,#projects .card,#contact .contact-card,#contact .card{border-color:#342721}
+.card.project .body h3,.card h3,.panel h3,.contact-card h3{color:#F4EBDD}
+.card a,.panel a,.contact-card a{color:#DDC5A3}
+.card .links a:first-child,.button-primary,.links a:first-child{background:#DDC5A3;color:#342721;border-color:#DDC5A3;box-shadow:none}
+.button-secondary{background:transparent;color:#DDC5A3;border:2px solid #DDC5A3}
+.hero h1 span{background:none;-webkit-text-fill-color:#DDC5A3;color:#DDC5A3}
+.stat b{background:none;-webkit-text-fill-color:#DDC5A3;color:#DDC5A3}
+.brand::before,.contact-icon,.interest-list li::before,.hv i,.service-card::before{background:#DDC5A3;color:#342721}
+.contact-icon svg *{stroke:#342721}.contact-icon svg[fill="#fff"]{fill:#342721}
+.up-link,.to-top{background:#342721;border:2px solid #DDC5A3;color:#DDC5A3}
+.site-footer{background:#342721;margin-top:0;border-top:2px solid #DDC5A3;color:#DDC5A3}
+.tag{background:transparent;border:1.5px solid #DDC5A3;color:#DDC5A3}
+.note{background:#342721;color:#DDC5A3;border-inline-start-color:#DDC5A3}
+input,textarea{background:#2a1f1a;color:#F4EBDD;border:2px solid #DDC5A3}
+#about .card a,#about .panel a,#projects .card a,#contact .card a,#contact .contact-card a{color:#DDC5A3}#projects .card .links a:first-child{color:#342721}
 </style>
 </head>
 <body>
