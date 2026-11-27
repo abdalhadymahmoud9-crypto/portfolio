@@ -403,6 +403,50 @@ input:focus,textarea:focus{border-color:var(--c5);outline:none}
 body{background:var(--c1)}
 body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(800px 480px at 88% -5%,rgba(181,88,106,.16),transparent 60%),radial-gradient(700px 460px at 4% 40%,rgba(207,154,139,.07),transparent 60%),radial-gradient(900px 600px at 50% 115%,rgba(0,0,0,.5),transparent 60%)}
 .nav-inner{background:var(--c2)}
+/* play vs engine */
+#play{background:var(--c2)!important;color:var(--c7)!important}
+#play .eyebrow{background:var(--c1);color:var(--c7);padding:6px 14px;border-radius:999px}
+#play .section-heading{color:var(--c7)}#play .section-heading::after{background:var(--c5)}
+#play .section-lead{color:var(--c6)}#play .section-lead strong{color:var(--c7)}
+.play-wrap{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:28px;align-items:start}
+.pg-board-box{position:relative;width:100%;max-width:560px;margin-inline:auto}
+.pg-board{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,1fr);aspect-ratio:1/1;width:100%;border:6px solid var(--c1);border-radius:14px;overflow:hidden;box-shadow:8px 8px 0 var(--c1);user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.pg-sq{position:relative;display:flex;align-items:center;justify-content:center;background:#F1E4D6;cursor:pointer;font-size:clamp(26px,8.2vw,56px);line-height:1;-webkit-tap-highlight-color:transparent}
+.pg-sq.d{background:#B5586A}
+.pg-sq.last::before{content:"";position:absolute;inset:0;background:rgba(255,214,102,.5)}
+.pg-sq.sel::before{content:"";position:absolute;inset:0;background:rgba(88,196,140,.65)}
+.pg-sq.chk::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(230,40,40,.85),rgba(230,40,40,0) 75%)}
+.pg-sq.mv::after{content:"";position:absolute;width:26%;height:26%;border-radius:50%;background:rgba(26,11,16,.38)}
+.pg-sq.mv.cap::after{width:92%;height:92%;background:transparent;border:5px solid rgba(26,11,16,.4)}
+.pg-pc{position:relative;z-index:1;font-family:"Segoe UI Symbol","Noto Sans Symbols 2","Apple Symbols",sans-serif;font-variant-emoji:text}
+.pg-pc.w{color:#fff;text-shadow:0 0 2px #1A0B10,0 0 2px #1A0B10,1px 1px 0 #1A0B10,-1px -1px 0 #1A0B10,1px -1px 0 #1A0B10,-1px 1px 0 #1A0B10}
+.pg-pc.b{color:#1A0B10;text-shadow:0 0 1px rgba(255,255,255,.5)}
+.pg-co{position:absolute;z-index:2;font:700 10px/1 "Segoe UI",Arial,sans-serif;opacity:.7;color:#4A1A27;pointer-events:none}
+.pg-sq.d .pg-co{color:#F5EDE4}
+.pg-co.r{top:3px;left:3px}.pg-co.f{bottom:3px;right:3px}
+.pg-start,.pg-over,.pg-promo{position:absolute;inset:6px;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:18px;border-radius:8px;background:rgba(26,11,16,.88);color:var(--c7)}
+.pg-start[hidden],.pg-over[hidden],.pg-promo[hidden]{display:none}
+.pg-start-t{margin:0;font-size:1.25rem;font-weight:800}
+.pg-start-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.pg-btn{font:inherit;font-weight:700;cursor:pointer;border-radius:999px;border:2px solid var(--c5);background:transparent;color:var(--c7);padding:10px 20px;min-height:44px}
+.pg-btn:hover:not(:disabled){background:var(--c3)}
+.pg-btn:disabled{opacity:.45;cursor:not-allowed}
+.pg-btn-main{background:var(--c6);color:var(--c1);border-color:var(--c6)}
+.pg-btn-main:hover:not(:disabled){background:var(--c7)}
+.pg-hint{margin:0;font-size:.85rem;color:var(--c6);line-height:1.7}
+.pg-promo .pg-sq{width:64px;height:64px;font-size:44px;border-radius:12px;flex:none}
+.pg-promo-row{display:flex;gap:8px}
+.pg-over h3{margin:0;font-size:1.6rem}.pg-over p{margin:0;max-width:34ch}
+.play-side{display:flex;flex-direction:column;gap:14px;background:var(--c1);border-radius:var(--r);padding:20px;box-shadow:8px 8px 0 var(--c3)}
+.pg-status{font-weight:700;min-height:3.4em}
+.pg-moves{margin:0;padding:10px 14px;list-style:none;display:grid;grid-template-columns:2.2em 1fr 1fr;column-gap:6px;row-gap:2px;max-height:230px;overflow:auto;background:var(--c2);border-radius:14px;font-size:.95rem;line-height:1.7;color:var(--c6)}
+.pg-moves li{display:contents}.pg-moves .n{color:var(--c5)}.pg-moves .m{color:var(--c7)}
+.pg-moves:empty{display:none}
+.pg-actions{display:flex;gap:10px;flex-wrap:wrap}
+.pg-think::after{content:"";display:inline-block;width:.9em;height:.9em;margin-inline-start:8px;border:3px solid var(--c5);border-top-color:transparent;border-radius:50%;vertical-align:-2px;animation:pgspin 1s linear infinite}
+@keyframes pgspin{to{transform:rotate(360deg)}}
+@media(max-width:860px){.play-wrap{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.pg-think::after{animation:none}}
 </style>
 </head>
 <body>
@@ -415,6 +459,7 @@ body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-
         <a href="#skills">المهارات</a>
         <a href="#projects">المشاريع</a>
         <a href="#services">خدماتي</a>
+        <a href="#play">العب ضدي</a>
         <a href="#contact">تواصل معي</a>
       </div>
     </div>
@@ -553,6 +598,39 @@ body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-
       </div>
     </section>
 
+    <section class="section" id="play">
+      <div class="container">
+        <p class="eyebrow">تحدَّ الموقع</p>
+        <h2 class="section-heading">العب شطرنج ضدّ الموقع</h2>
+        <p class="section-lead">الخصم هو Stockfish بأقصى قوته، بلا مستوى سهل. لو غلبته وكسبت المباراة تاخد <strong>خصم 25% على خدماتي</strong>. محدّش بيكسبه كتير، بس جرّب.</p>
+        <div class="play-wrap">
+          <div class="play-board-col">
+            <div class="pg-board-box">
+              <div id="pg-board" class="pg-board" dir="ltr" aria-label="رقعة الشطرنج"></div>
+              <div id="pg-start" class="pg-start">
+                <p class="pg-start-t">اختار لونك وابدأ</p>
+                <div class="pg-start-btns">
+                  <button type="button" class="pg-btn pg-btn-main" data-color="w">أبيض (تبدأ أنت)</button>
+                  <button type="button" class="pg-btn" data-color="b">أسود</button>
+                </div>
+                <p class="pg-hint">المحرك (حوالي 7 ميجابايت) بيتحمّل مرة واحدة فقط لما تضغط ابدأ، مش مع فتح الموقع.</p>
+              </div>
+              <div id="pg-over" class="pg-over" hidden></div>
+            </div>
+          </div>
+          <aside class="play-side">
+            <div class="pg-status" id="pg-status" role="status" aria-live="polite">جاهز لما تكون جاهز.</div>
+            <ol class="pg-moves" id="pg-moves" dir="ltr" aria-label="النقلات"></ol>
+            <div class="pg-actions">
+              <button type="button" class="pg-btn" id="pg-resign" disabled>استسلام</button>
+              <button type="button" class="pg-btn" id="pg-new" disabled>لعبة جديدة</button>
+            </div>
+            <p class="pg-hint">الفائز بيتواصل معايا من قسم التواصل تحت، والخصم 25% بيتطبق على خدماتي.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contact">
       <div class="container">
         <p class="eyebrow">خلّينا نتواصل</p>
@@ -648,6 +726,157 @@ body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-
     (function(){var b=document.getElementById("to-top");function t(){b.classList.toggle("show",window.scrollY>400)}window.addEventListener("scroll",t,{passive:true});t();b.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});function clash(){var r=b.getBoundingClientRect(),m=6,hit=false,els=document.querySelectorAll("a[href],button,input,textarea,select");for(var i=0;i<els.length;i++){var e=els[i];if(e===b)continue;var q=e.getBoundingClientRect();if(q.width&&q.bottom>0&&q.top<innerHeight&&!(q.right<r.left-m||q.left>r.right+m||q.bottom<r.top-m||q.top>r.bottom+m)){hit=true;break}}return hit}
 var tick=false;function chk(){tick=false;b.classList.toggle("hide",clash())}window.addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(chk)}},{passive:true});window.addEventListener("resize",chk);chk()})();
   </script>
+<script type="module">
+(function(){
+var boardEl=document.getElementById('pg-board'),startEl=document.getElementById('pg-start'),overEl=document.getElementById('pg-over'),
+statusEl=document.getElementById('pg-status'),movesEl=document.getElementById('pg-moves'),
+resignBtn=document.getElementById('pg-resign'),newBtn=document.getElementById('pg-new');
+if(!boardEl)return;
+var G={w:{k:'\u265A',q:'\u265B',r:'\u265C',b:'\u265D',n:'\u265E',p:'\u265F'}};
+var game=null,Chess=null,worker=null,engineReady=null,me='w',sel=null,busy=false,over=true,lastMove=null,legal=[],promoEl=null,searchId=0;
+var FILES='abcdefgh';
+function glyph(t){return G.w[t]+'\uFE0E'}
+function sqName(r,c){return FILES[c]+(8-r)}
+function draw(){
+  var flip=me==='b',html='',chkSq=null;
+  if(game.inCheck()){var t=game.turn();var b=game.board();for(var r=0;r<8;r++)for(var c=0;c<8;c++){var p=b[r][c];if(p&&p.type==='k'&&p.color===t)chkSq=p.square}}
+  for(var i=0;i<64;i++){
+    var rr=flip?7-Math.floor(i/8):Math.floor(i/8),cc=flip?7-i%8:i%8,n=sqName(rr,cc),p=game.get(n);
+    var cls='pg-sq'+((rr+cc)%2?' d':'');
+    if(lastMove&&(lastMove.from===n||lastMove.to===n))cls+=' last';
+    if(sel===n)cls+=' sel';
+    if(chkSq===n)cls+=' chk';
+    var mv=legal.filter(function(m){return m.to===n})[0];
+    if(mv)cls+=' mv'+(mv.captured?' cap':'');
+    var inner='';
+    if(i%8===0)inner+='<span class="pg-co r">'+(8-rr)+'</span>';
+    if(i>=56)inner+='<span class="pg-co f">'+FILES[cc]+'</span>';
+    if(p)inner+='<span class="pg-pc '+p.color+'">'+glyph(p.type)+'</span>';
+    html+='<div class="'+cls+'" data-sq="'+n+'" role="button" aria-label="'+n+(p?' '+(p.color==='w'?'أبيض':'أسود')+' '+p.type:'')+'">'+inner+'</div>';
+  }
+  boardEl.innerHTML=html;
+}
+function setStatus(t,think){statusEl.textContent=t;statusEl.classList.toggle('pg-think',!!think)}
+function renderMoves(){
+  var h=game.history(),out='';
+  for(var i=0;i<h.length;i+=2)out+='<li><span class="n">'+(i/2+1)+'.</span><span class="m">'+h[i]+'</span><span class="m">'+(h[i+1]||'')+'</span></li>';
+  movesEl.innerHTML=out;movesEl.scrollTop=movesEl.scrollHeight;
+}
+function loadEngine(){
+  if(engineReady)return engineReady;
+  engineReady=new Promise(function(res,rej){
+    var w;try{w=new Worker('stockfish-18-lite-single.js#'+encodeURIComponent('https://unpkg.com/stockfish@18.0.8/bin/stockfish-18-lite-single.wasm'))}catch(e){rej(e);return}
+    worker=w;var stage=0,t=setTimeout(function(){rej(new Error('timeout'))},90000);
+    w.onerror=function(e){clearTimeout(t);rej(e)};
+    w.onmessage=function(e){
+      var s=typeof e.data==='string'?e.data:'';
+      if(stage===0&&s.indexOf('uciok')>=0){stage=1;w.postMessage('setoption name Threads value 1');w.postMessage('setoption name Hash value 64');w.postMessage('isready')}
+      else if(stage===1&&s.indexOf('readyok')>=0){stage=2;clearTimeout(t);w.onmessage=onEngine;res()}
+    };
+    w.postMessage('uci');
+  });
+  engineReady.catch(function(){engineReady=null;if(worker){worker.terminate();worker=null}});
+  return engineReady;
+}
+function onEngine(e){
+  var s=typeof e.data==='string'?e.data:'';
+  if(s.indexOf('bestmove')!==0)return;
+  if(!busy||over)return;
+  var mv=s.split(' ')[1];busy=false;
+  if(!mv||mv==='(none)')return;
+  var m;try{m=game.move({from:mv.slice(0,2),to:mv.slice(2,4),promotion:mv[4]})}catch(err){m=null}
+  if(!m){engineTurn();return}
+  lastMove=m;afterMove();
+}
+function engineTurn(){
+  busy=true;setStatus('المحرك بيفكر...',true);
+  worker.postMessage('position fen '+game.fen());
+  worker.postMessage('go movetime 2500');
+}
+function afterMove(){
+  sel=null;legal=[];draw();renderMoves();
+  if(game.isGameOver()){finish();return}
+  if(game.turn()===me){setStatus(game.inCheck()?'كش! دورك.':'دورك.')}
+  else engineTurn();
+}
+function finish(why){
+  over=true;busy=false;resignBtn.disabled=true;newBtn.disabled=false;
+  var title,body,win=false;
+  if(why==='resign'){title='خسرت هذه الجولة';body='استسلمت. جرّب مرة تانية.'}
+  else if(game.isCheckmate()){
+    if(game.turn()!==me){win=true}
+    else{title='كش مات، المحرك كسب';body='المحرك بأقصى قوته بيكسب كتير. جرّب مرة تانية.'}
+  }else{title='تعادل';body='انتهت المباراة بالتعادل. الخصم مخصص للفائز فقط، جرّب مرة تانية.'}
+  if(win){
+    title='مبروك، كسبت!';
+    body='غلبت Stockfish بأقصى قوته. ليك خصم 25% على خدماتي. تواصل معايا من قسم التواصل وقولي إنك كسبت.';
+  }
+  overEl.innerHTML='<h3>'+title+'</h3><p>'+body+'</p>'+(win?'<a class="pg-btn pg-btn-main" href="#contact" style="text-decoration:none;display:inline-flex;align-items:center">تواصل معي</a>':'')+'<button type="button" class="pg-btn'+(win?'':' pg-btn-main')+'" id="pg-again">لعبة جديدة</button>';
+  overEl.hidden=false;
+  setStatus(win?'فزت! الخصم 25% على خدماتي من نصيبك.':title);
+  document.getElementById('pg-again').onclick=reset;
+}
+function reset(){
+  overEl.hidden=true;startEl.hidden=false;over=true;busy=false;sel=null;legal=[];lastMove=null;
+  resignBtn.disabled=true;newBtn.disabled=true;
+  if(worker)worker.postMessage('stop');
+  setStatus('جاهز لما تكون جاهز.');movesEl.innerHTML='';
+  game=Chess?new Chess():null;if(game){me='w';draw()}
+}
+function closePromo(){if(promoEl){promoEl.remove();promoEl=null}}
+function askPromo(from,to){
+  promoEl=document.createElement('div');promoEl.className='pg-promo';
+  var row='';['q','r','b','n'].forEach(function(t){row+='<div class="pg-sq'+(t==='q'||t==='b'?'':' d')+'" data-p="'+t+'"><span class="pg-pc '+me+'">'+glyph(t)+'</span></div>'});
+  promoEl.innerHTML='<p class="pg-start-t">ترقية البيدق إلى</p><div class="pg-promo-row" dir="ltr">'+row+'</div>';
+  boardEl.parentNode.appendChild(promoEl);
+  promoEl.onclick=function(e){var el=e.target.closest('[data-p]');if(!el)return;var p=el.getAttribute('data-p');closePromo();doMove(from,to,p)};
+}
+function doMove(from,to,promo){
+  var m=game.move({from:from,to:to,promotion:promo});
+  if(!m)return;lastMove=m;afterMove();
+}
+boardEl.addEventListener('click',function(e){
+  var el=e.target.closest('.pg-sq');if(!el||over||busy||promoEl)return;
+  var n=el.getAttribute('data-sq');
+  var mv=legal.filter(function(m){return m.to===n});
+  if(sel&&mv.length){
+    if(mv[0].promotion){askPromo(sel,n)}else doMove(sel,n);
+    return;
+  }
+  var p=game.get(n);
+  if(p&&p.color===me&&game.turn()===me){sel=n;legal=game.moves({square:n,verbose:true})}
+  else{sel=null;legal=[]}
+  draw();
+});
+function begin(color){
+  startEl.hidden=true;me=color;
+  setStatus('بيتحمّل المحرك لأول مرة (حوالي 7 ميجا)، ممكن ياخد دقيقة...',true);
+  loadEngine().then(function(){
+    game=new Chess();over=false;lastMove=null;sel=null;legal=[];busy=false;
+    worker.postMessage('ucinewgame');
+    resignBtn.disabled=false;newBtn.disabled=false;movesEl.innerHTML='';
+    draw();
+    if(me==='w')setStatus('أنت بالأبيض. ابدأ.');else engineTurn();
+  }).catch(function(){
+    startEl.hidden=false;
+    setStatus('تعذّر تحميل المحرك. اتأكد من الإنترنت وجرّب تاني.');
+  });
+}
+startEl.addEventListener('click',function(e){var b=e.target.closest('[data-color]');if(!b)return;
+  if(Chess){game=game||new Chess();begin(b.getAttribute('data-color'));return}
+  setStatus('بيتحمّل المحرك لأول مرة (حوالي 7 ميجا)، ممكن ياخد دقيقة...',true);startEl.hidden=true;
+  import('./chess-rules.js').then(function(m){Chess=m.Chess;begin(b.getAttribute('data-color'))}).catch(function(){startEl.hidden=false;setStatus('تعذّر التحميل. جرّب تاني.')});
+});
+resignBtn.addEventListener('click',function(){if(over)return;if(confirm('تستسلم؟'))finish('resign')});
+newBtn.addEventListener('click',function(){if(!over&&!confirm('تبدأ لعبة جديدة وتتخلى عن الحالية؟'))return;reset()});
+// empty board preview without loading anything heavy
+boardEl.innerHTML='';
+var pre=['r','n','b','q','k','b','n','r'],h='';
+for(var i=0;i<64;i++){var r=Math.floor(i/8),c=i%8,t=r===0?pre[c]:r===1?'p':r===6?'p':r===7?pre[c]:'',col=r<2?'b':'w';
+  h+='<div class="pg-sq'+((r+c)%2?' d':'')+'">'+(t?'<span class="pg-pc '+col+'">'+glyph(t)+'</span>':'')+'</div>'}
+boardEl.innerHTML=h;
+})();
+</script>
 </body>
 </html>
 
