@@ -418,9 +418,11 @@ body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-
 .pg-sq.chk::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(230,40,40,.85),rgba(230,40,40,0) 75%)}
 .pg-sq.mv::after{content:"";position:absolute;width:26%;height:26%;border-radius:50%;background:rgba(26,11,16,.38)}
 .pg-sq.mv.cap::after{width:92%;height:92%;background:transparent;border:5px solid rgba(26,11,16,.4)}
-.pg-pc{position:relative;z-index:1;font-family:"Segoe UI Symbol","Noto Sans Symbols 2","Apple Symbols",sans-serif;font-variant-emoji:text}
-.pg-pc.w{color:#fff;text-shadow:0 0 2px #1A0B10,0 0 2px #1A0B10,1px 1px 0 #1A0B10,-1px -1px 0 #1A0B10,1px -1px 0 #1A0B10,-1px 1px 0 #1A0B10}
-.pg-pc.b{color:#1A0B10;text-shadow:0 0 1px rgba(255,255,255,.5)}
+.pg-pc{position:relative;z-index:1;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.pg-pc svg{width:104%;height:104%;display:block;fill:var(--pf);stroke:var(--ps);stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round;overflow:visible}
+.pg-pc svg .l{fill:none}.pg-pc svg .e{fill:var(--ps);stroke:none}
+.pg-pc.w{--pf:#fff;--ps:#1A0B10}
+.pg-pc.b{--pf:#1A0B10;--ps:#F5EDE4}
 .pg-co{position:absolute;z-index:2;font:700 10px/1 "Segoe UI",Arial,sans-serif;opacity:.7;color:#4A1A27;pointer-events:none}
 .pg-sq.d .pg-co{color:#F5EDE4}
 .pg-co.r{top:3px;left:3px}.pg-co.f{bottom:3px;right:3px}
@@ -434,7 +436,7 @@ body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-
 .pg-btn-main{background:var(--c6);color:var(--c1);border-color:var(--c6)}
 .pg-btn-main:hover:not(:disabled){background:var(--c7)}
 .pg-hint{margin:0;font-size:.85rem;color:var(--c6);line-height:1.7}
-.pg-promo .pg-sq{width:64px;height:64px;font-size:44px;border-radius:12px;flex:none}
+.pg-promo .pg-sq{width:64px;height:64px;border-radius:12px;flex:none}
 .pg-promo-row{display:flex;gap:8px}
 .pg-over h3{margin:0;font-size:1.6rem}.pg-over p{margin:0;max-width:34ch}
 .play-side{display:flex;flex-direction:column;gap:14px;background:var(--c1);border-radius:var(--r);padding:20px;box-shadow:8px 8px 0 var(--c3)}
@@ -735,7 +737,8 @@ if(!boardEl)return;
 var G={w:{k:'\u265A',q:'\u265B',r:'\u265C',b:'\u265D',n:'\u265E',p:'\u265F'}};
 var game=null,Chess=null,worker=null,engineReady=null,me='w',sel=null,busy=false,over=true,lastMove=null,legal=[],promoEl=null,searchId=0;
 var FILES='abcdefgh';
-function glyph(t){return G.w[t]+'\uFE0E'}
+var PIECES={'p': '<circle cx="22.5" cy="13.5" r="5.5"/><path d="M19 20h7l3 9c1 3 3 4 3 7H13c0-3 2-4 3-7z"/><path d="M11 39h23v-3H11z"/>', 'r': '<path d="M11 39h23v-4H11z"/><path d="M14 35V20h17v15z"/><path d="M12 20v-9h4v3h4v-3h5v3h4v-3h4v9z"/>', 'n': '<path d="M12 39c0-8 2-12 6-16 2-2 1-4 0-5-3-1-6 0-8 3l-2-2c2-5 6-8 10-9l1-4 4 3c9 1 15 8 15 18 0 4 1 8 2 12z"/><circle cx="22" cy="14" r="1.4" class="e"/>', 'b': '<circle cx="22.5" cy="8" r="2.8"/><path d="M22.5 11c6 4 9 9 6.5 14-1 2-3 3-3 5h-7c0-2-2-3-3-5-2.5-5 0-10 6.5-14z"/><path class="l" d="M20 19l5 5"/><path d="M14 33c4 2 13 2 17 0v3H14z"/><path d="M11 39h23v-3H11z"/>', 'q': '<path d="M10 36L7 18l8 8 1.500-14 6 12 6-12 1.500 14 8-8-3 18z"/><circle cx="7" cy="17" r="2.2"/><circle cx="16" cy="10.5" r="2.2"/><circle cx="22.5" cy="8" r="2.2"/><circle cx="29" cy="10.5" r="2.2"/><circle cx="38" cy="17" r="2.2"/><path d="M10 39h25v-3H10z"/>', 'k': '<circle cx="22.5" cy="10" r="3.6"/><path d="M11 36L8 20l7.500 5L22.5 15l7 10L37 20l-3 16z"/><path d="M10 39h25v-3H10z"/>'};
+function glyph(t){return '<svg viewBox="0 0 45 45" aria-hidden="true">'+PIECES[t]+'</svg>'}
 function sqName(r,c){return FILES[c]+(8-r)}
 function draw(){
   var flip=me==='b',html='',chkSq=null;
