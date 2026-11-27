@@ -447,6 +447,14 @@ body::before{display:block;content:"";position:fixed;inset:0;z-index:-1;pointer-
 .pg-actions{display:flex;gap:10px;flex-wrap:wrap}
 .pg-think::after{content:"";display:inline-block;width:.9em;height:.9em;margin-inline-start:8px;border:3px solid var(--c5);border-top-color:transparent;border-radius:50%;vertical-align:-2px;animation:pgspin 1s linear infinite}
 @keyframes pgspin{to{transform:rotate(360deg)}}
+.pg-over{overflow:auto;justify-content:safe center;gap:8px;padding:12px}
+.pg-over h3{font-size:1.35rem}.pg-over p{font-size:.9rem;line-height:1.55}.pg-over .pg-btn{padding:7px 18px;min-height:38px}
+.pg-proof{font-size:.95rem;line-height:1.7;color:var(--c7)}
+.pg-stamp{font-size:.82rem!important;color:var(--c6);border:1px dashed var(--c5);border-radius:12px;padding:6px 12px}
+.pg-demo{font-size:.8rem!important;font-weight:800;color:var(--c1);background:#FFD666;border-radius:999px;padding:3px 12px}
+.pg-confetti{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden}
+.pg-confetti i{position:absolute;top:-24px;border-radius:2px;opacity:0;animation-name:pgfall;animation-timing-function:cubic-bezier(.3,.6,.5,1);animation-fill-mode:forwards}
+@keyframes pgfall{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--dx),105vh) rotate(var(--rot))}}
 @media(max-width:860px){.play-wrap{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.pg-think::after{animation:none}}
 </style>
@@ -802,22 +810,49 @@ function afterMove(){
   if(game.turn()===me){setStatus(game.inCheck()?'كش! دورك.':'دورك.')}
   else engineTurn();
 }
-function finish(why){
-  over=true;busy=false;resignBtn.disabled=true;newBtn.disabled=false;
-  var title,body,win=false;
-  if(why==='resign'){title='خسرت هذه الجولة';body='استسلمت. جرّب مرة تانية.'}
-  else if(game.isCheckmate()){
-    if(game.turn()!==me){win=true}
-    else{title='كش مات، المحرك كسب';body='المحرك بأقصى قوته بيكسب كتير. جرّب مرة تانية.'}
-  }else{title='تعادل';body='انتهت المباراة بالتعادل. الخصم مخصص للفائز فقط، جرّب مرة تانية.'}
-  if(win){
-    title='مبروك، كسبت!';
-    body='غلبت Stockfish بأقصى قوته. ليك خصم 25% على خدماتي. تواصل معايا من قسم التواصل وقولي إنك كسبت.';
+function stamp(){
+  try{return new Date().toLocaleString('ar-EG',{dateStyle:'full',timeStyle:'medium'})}catch(e){return new Date().toString()}
+}
+function confetti(){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var box=document.createElement('div');box.className='pg-confetti';box.setAttribute('aria-hidden','true');
+  var cols=['#F5EDE4','#CF9A8B','#B5586A','#FFD666','#58C48C','#fff'];
+  for(var i=0;i<70;i++){
+    var p=document.createElement('i');
+    p.style.left=(Math.random()*100)+'%';
+    p.style.background=cols[i%cols.length];
+    p.style.width=(6+Math.random()*7)+'px';p.style.height=(8+Math.random()*10)+'px';
+    p.style.animationDuration=(2.4+Math.random()*2.2)+'s';
+    p.style.animationDelay=(Math.random()*0.9)+'s';
+    p.style.setProperty('--dx',((Math.random()*2-1)*120)+'px');
+    p.style.setProperty('--rot',(360+Math.random()*720)+'deg');
+    box.appendChild(p);
   }
-  overEl.innerHTML='<h3>'+title+'</h3><p>'+body+'</p>'+(win?'<a class="pg-btn pg-btn-main" href="#contact" style="text-decoration:none;display:inline-flex;align-items:center">تواصل معي</a>':'')+'<button type="button" class="pg-btn'+(win?'':' pg-btn-main')+'" id="pg-again">لعبة جديدة</button>';
+  document.body.appendChild(box);
+  setTimeout(function(){box.remove()},6000);
+}
+function renderEnd(kind,demo,nMoves){
+  over=true;busy=false;resignBtn.disabled=true;newBtn.disabled=false;startEl.hidden=true;
+  var title,body,win=kind==='win',extra='';
+  if(kind==='resign'){title='خسرت هذه الجولة';body='استسلمت. جرّب مرة تانية.'}
+  else if(kind==='lose'){title='كش مات، المحرك كسب';body='المحرك بأقصى قوته بيكسب كتير. جرّب مرة تانية.'}
+  else if(kind==='draw'){title='تعادل';body='انتهت المباراة بالتعادل. الخصم مخصص للفائز فقط، جرّب مرة تانية.'}
+  else{
+    title='مبروك، كسبت!';
+    body='غلبت Stockfish بأقصى قوته. ليك خصم 25% على خدماتي.';
+    extra='<p class="pg-proof"><strong>خد لقطة شاشة (سكرين شوت) لهذه الشاشة</strong> وابعتها لي من قسم التواصل عشان أطبّق الخصم.</p><p class="pg-stamp" dir="auto">'+stamp()+(nMoves?' · '+nMoves+' نقلة':'')+'</p>';
+  }
+  var badge=demo?'<p class="pg-demo">معاينة للتجربة فقط، مش فوز حقيقي</p>':'';
+  overEl.innerHTML=badge+'<h3>'+title+'</h3><p>'+body+'</p>'+extra+(win?'<a class="pg-btn pg-btn-main" href="#contact" style="text-decoration:none;display:inline-flex;align-items:center">تواصل معي</a>':'')+'<button type="button" class="pg-btn'+(win?'':' pg-btn-main')+'" id="pg-again">لعبة جديدة</button>';
   overEl.hidden=false;
   setStatus(win?'فزت! الخصم 25% على خدماتي من نصيبك.':title);
-  document.getElementById('pg-again').onclick=reset;
+  document.getElementById('pg-again').onclick=function(){if(demo)location.href=location.pathname;else reset()};
+  if(win)confetti();
+}
+function finish(why){
+  if(why==='resign'){renderEnd('resign');return}
+  if(game.isCheckmate()){renderEnd(game.turn()!==me?'win':'lose',false,Math.ceil(game.history().length/2));return}
+  renderEnd('draw');
 }
 function reset(){
   overEl.hidden=true;startEl.hidden=false;over=true;busy=false;sel=null;legal=[];lastMove=null;
@@ -872,12 +907,14 @@ startEl.addEventListener('click',function(e){var b=e.target.closest('[data-color
 });
 resignBtn.addEventListener('click',function(){if(over)return;if(confirm('تستسلم؟'))finish('resign')});
 newBtn.addEventListener('click',function(){if(!over&&!confirm('تبدأ لعبة جديدة وتتخلى عن الحالية؟'))return;reset()});
+var qd=(location.search.match(/[?&]demo=(win|lose)/)||[])[1];
 // empty board preview without loading anything heavy
 boardEl.innerHTML='';
 var pre=['r','n','b','q','k','b','n','r'],h='';
 for(var i=0;i<64;i++){var r=Math.floor(i/8),c=i%8,t=r===0?pre[c]:r===1?'p':r===6?'p':r===7?pre[c]:'',col=r<2?'b':'w';
   h+='<div class="pg-sq'+((r+c)%2?' d':'')+'">'+(t?'<span class="pg-pc '+col+'">'+glyph(t)+'</span>':'')+'</div>'}
 boardEl.innerHTML=h;
+if(qd){renderEnd(qd,true,qd==='win'?23:0);var pl=document.getElementById('play');if(pl)setTimeout(function(){pl.scrollIntoView()},300)}
 })();
 </script>
 </body>
